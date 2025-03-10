@@ -7,7 +7,11 @@ import { categories } from './data/category'
 // import './App.css'
 
 function App() {
+  const [indexCate, setIndexCate] = useState(0)
 
+  const handlerClicCate = (idx) => {
+    setIndexCate(idx);
+  }
   return (
     <>
       {/* <DemoUseEffect /> */}
@@ -19,8 +23,8 @@ function App() {
           <div className="col-lg-4">
             <h2>Danh muc</h2>
             <ul class="list-group list-group-numbered">
-              {categories.map((item) =>
-                <li class="list-group-item">{item.name}</li>
+              {categories.map((item, index) =>
+                <li key={item.id} className={"list-group-item" + (indexCate === index && " active")} onClick={() => handlerClicCate(index)} >{item.name}{index}</li>
               )}
 
             </ul>
